@@ -28,7 +28,7 @@ For additional information about getting support for libTML got to [http://www.l
   [2]: https://www.embarcadero.com/de/products/rad-studio
   [3]: http://www.lazarus-ide.org/
   [4]: https://github.com/tml21/libtml-c
-  [5]: http://www.libtml.org/docs/libtml-java/
+  [5]: http://www.libtml.org/docs/libtml-java-html/
   [6]: https://groups.google.com/forum/#!forum/libtml
   [7]: https://groups.google.com/forum/#!forum/libtml/join
   [8]: http://www.libtml.org/support/
