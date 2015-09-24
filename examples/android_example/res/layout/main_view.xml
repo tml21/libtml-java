@@ -1,0 +1,47 @@
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity"
+    android:name="com.example.mk.tmlexample.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mk.tmlexample.MainActivity" >
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="57dp">
+
+
+    </FrameLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_gravity="right|bottom"
+        android:background="@drawable/ic_add_circle_black_24dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="45dp"
+        android:onClick="addButton"
+        android:layout_alignBottom="@id/fragment_container"
+        android:layout_alignRight="@id/fragment_container" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/infoText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+</RelativeLayout>

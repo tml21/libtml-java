@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/scrollView"
+    android:fillViewport="false">
+    <!--todo: kein popup des keyboard mehr: vllt will man ja nur angucken-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:context="com.example.mk.tmlexample.InputActivity"
+        android:id="@+id/relative_layout">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTitle"
+        android:layout_below="@+id/textTitle"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:layout_alignLeft="@+id/textTitle"
+        android:layout_alignStart="@+id/textTitle">
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Title"
+        android:id="@+id/textTitle"
+        android:layout_marginTop="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/textBody"
+        android:layout_below="@+id/editTitle"
+        android:layout_alignLeft="@+id/textTitle"
+        android:layout_alignStart="@+id/textTitle"
+        android:layout_marginTop="34dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:maxLines="10"
+        android:ems="10"
+        android:id="@+id/editBody"
+        android:imeOptions="actionDone"
+        android:focusable="true"
+        android:layout_below="@+id/textBody"
+        android:layout_alignLeft="@+id/textBody"
+        android:layout_alignStart="@+id/textBody" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:id="@+id/button"
+            android:onClick="saveItem"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/editBody"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+
+</ScrollView>
