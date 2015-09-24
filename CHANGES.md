@@ -25,5 +25,5 @@ JNI wrapper anf Java classes
 **Maik Wojcieszak** - [wobe-systems GmbH](http://www.wobe-team.com)
 Documentation, homepage and project lead.
 
-**Maria Anna-Kandsorra** - [wobe-systems GmbH](http://www.wobe-team.com)
+**Maria-Anna Kandsorra** - [wobe-systems GmbH](http://www.wobe-team.com)
 Examples, test and documentation.
