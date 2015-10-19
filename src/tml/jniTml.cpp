@@ -1053,7 +1053,7 @@ TML_INT32 handleOnBalBusyStatusRequestCallback (TML_COMMAND_HANDLE tmlhandle, TM
 //        Helper functions
 char* getIDString(jlong iID){
   static char sIDString[128];
-  TML_INT64 iVal = (TML_INT64) iID;
+  long long iVal = (long long) iID;
 #if defined(LINUX) || defined (MINGW_BUILD)
   sprintf (sIDString, "%lld", iVal);
 #else // LINUX

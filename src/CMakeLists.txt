@@ -193,6 +193,56 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
   set (PLATFORM_FOUND true) 
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
 
+######################################################
+## FreeBSD / 32 bit
+if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
+  set(PROJECT freeBSD_x86-32)
+  
+  set(JNIINCLUDE "/usr/local/openjdk7/include/")
+  set(JNIINCLUDE_PLATFORM "/usr/local/openjdk7/include/freebsd")
+  
+  set(TMLINCLUDE "/root/workdir/libtml-c/sidex/src"
+                 "/root/workdir/libtml-c/common/src"
+                 "/root/workdir/libtml-c/tml/src")
+
+  LINK_DIRECTORIES("/root/workdir/libtml-c/build/freeBSD_x86-32/sidex"
+                   "/root/workdir/libtml-c/build/freeBSD_x86-32/tml")
+    
+  set(CPACK_SET_DESTDIR ON)
+  
+  set (CMAKE_FIND_LIBRARY_PREFIXES lib)
+  set (CMAKE_FIND_LIBRARY_SUFFIXES .so)
+
+  include (CPack)
+
+  set (PLATFORM_FOUND true) 
+endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
+
+######################################################
+## FreeBSD / 64 bit
+if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
+  set(PROJECT freeBSD_x86-64)
+  
+  set(JNIINCLUDE "/usr/local/openjdk7/include/")
+  set(JNIINCLUDE_PLATFORM "/usr/local/openjdk7/include/freebsd")
+  
+  set(TMLINCLUDE "/root/workdir/libtml-c/sidex/src"
+                 "/root/workdir/libtml-c/common/src"
+                 "/root/workdir/libtml-c/tml/src")
+
+  LINK_DIRECTORIES("/root/workdir/libtml-c/build/freeBSD_x86-64/sidex"
+                   "/root/workdir/libtml-c/build/freeBSD_x86-64/tml")
+  
+  set(CPACK_SET_DESTDIR ON)
+  
+  set (CMAKE_FIND_LIBRARY_PREFIXES lib)
+  set (CMAKE_FIND_LIBRARY_SUFFIXES .so)
+
+  include (CPack)
+
+  set (PLATFORM_FOUND true) 
+endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
+
 #######################################################
 ## OSX 32 bit
 if (${TML_TARGET_PLATFORM} STREQUAL osx_x86-32)
