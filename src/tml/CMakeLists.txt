@@ -106,7 +106,7 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
   
   set(TARGET jniTml)
   
-  set (INST_LIB_PATH ./lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
 
 #######################################################
@@ -123,7 +123,7 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
   
   set(TARGET jniTml)
   
-  set (INST_LIB_PATH ./lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
 
 #######################################################
@@ -220,7 +220,7 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_arm32)
   
   set(TARGET jniTml)
   
-  set (INST_LIB_PATH /usr/local/lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_arm32)
                     
 #######################################################
