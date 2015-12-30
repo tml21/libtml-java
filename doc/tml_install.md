@@ -298,12 +298,12 @@ A cross compile for Android on Windows requires [MinGW](http://www.mingw.org/) w
 - Install the libraries (superuser required)<br/>`make install`<br/>or<br/>`sudo make install`
 
 ## Java ##
-To use the libTML-java library in a project, for example [the introduction-example](some website), the project needs to include two components. You already generated the first one, the native libraries. The second component contains the JNI(Java Native Interface) functions calling particular native functions. To include the native libraries, they are set in the java library path during the call for execution. The JNI functions are included as an archive during both the compilation and the execution. 
+To use the libTML-java library in a project, the project needs to include two components. You already generated the first one, the native libraries. The second component contains the JNI(Java Native Interface) functions calling particular native functions. To include the native libraries, they are set in the java library path during the call for execution. The JNI functions are included as an archive during both the compilation and the execution. 
 
 ### creating a JAR ###
  If you don't already have a *Java Development Kit*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. The following description is one way on how to build a JAR. First change into the directory /libtml-java/java/com/tmlsidex/ and create a new folder, for example named 'class'. Then generate a txt-file with the pathnames of all java-files that exist in the subfolders in your present directory. Afterwards compile all java-files with the help of the txt-file, writing the output into the recently created 'class'-folder. Eventually change into the 'class'-folder and create the JAR file. <br/>
 
-*For example on windows*: <br/>
+*For example on windows (pathname must not include blanks)*: <br/>
 `mkdir class` <br/>
 `dir /s /B *.java > targetList.txt` <br/>
 `javac -cp class -d class @targetList.txt` <br/>

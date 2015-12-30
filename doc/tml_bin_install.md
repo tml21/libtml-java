@@ -7,6 +7,9 @@ Currently the following libTML-java binary packages are tested:
 - [OS-X](#OsxLink)
 - [freeBSD libtml-java](#freeBSDLink)
 
+Please read also the [additional notes referring to JNI](#javaLink) .
+
+
 <a name="WinLink"></a>
 ## Windows installer (32/64 bit) ##
 
@@ -131,4 +134,35 @@ The libTML-java freeBSD package installation contains
 
 
 - shared libraries for the Java Native Interface installed to folder **/usr/lib**
+
+<a name="javaLink"></a>
+## JNI ##
+To use the libTML-java library in a project, the project needs to include two components. After the binary package installation you have the first one, the native libraries. The second component contains the JNI(Java Native Interface) functions calling particular native functions. To include the native libraries, they are set in the java library path during the call for execution. The JNI functions are included as an archive during both the compilation and the execution. 
+
+### The JNI source files ###
+ In case of a Windows binary package installation, you have already the JNI sources in the destination subfolder **/java**.
+ 
+ In case of a Windows or OS-X binary package installation, you have already the JNI sources in the mounted disk image subfolder **/java**. Copy it onto your target system.
+
+ In case of debian or freeBSD you can  [download the JNI sources from GitHub](https://github.com/tml21/libtml-java). Download the ZIP archive and extract the subfolder **/java** on your target system.
+ 
+### creating a JAR ###
+ If you don't already have a *Java Development Kit*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. The following description is one way on how to build a JAR. 
+ First change into the directory /java/com/tmlsidex/ and create a new folder, for example named 'class'. Then generate a txt-file with the pathnames of all java-files that exist in the subfolders in your present directory. Afterwards compile all java-files with the help of the txt-file, writing the output into the recently created 'class'-folder. Eventually change into the 'class'-folder and create the JAR file. <br/>
+
+*For example on windows (pathname must not include blanks)*: <br/>
+`mkdir class` <br/>
+`dir /s /B *.java > targetList.txt` <br/>
+`javac -cp class -d class @targetList.txt` <br/>
+`cd class` <br/>
+`jar cf tmlSidex.jar com` <br/>
+
+*or linux*: <br/>
+`mkdir class` <br/>
+`find $(pwd) -name "*.java" > targetList.txt` <br/>
+`javac -cp class -d class @targetList.txt` <br/>
+`cd class` <br/>
+`jar cf tmlSidex.jar com` <br/>
+
+
 
