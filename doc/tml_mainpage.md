@@ -8,7 +8,7 @@
 
   - [License](\ref tml_license)
   - [Install libTML-java binary package](\ref tml_bin_install)
-  - [Install libTML-java open source files](\ref tml_install)
+  - [Install libTML-java from source](\ref tml_install)
   - [Introduction](\ref tml_intro)
 
 
