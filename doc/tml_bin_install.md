@@ -127,13 +127,13 @@ Download the libTML-java freeBSD package onto your target system.
 Install the package using shell command
 
 
-	pkg install /PATH/TO/PACKAGE/PACKAGENAME 
+	pkg install /PATH/TO/PACKAGE/PACKAGENAME.txz 
 
 ## libTML-java freeBSD package installation content ##
 The libTML-java freeBSD package installation contains
 
 
-- shared libraries for the Java Native Interface installed to folder **/usr/lib**
+- shared libraries for the Java Native Interface installed to folder **/usr/local/lib**
 
 <a name="javaLink"></a>
 ## JNI ##
