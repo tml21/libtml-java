@@ -19,7 +19,12 @@ Many use cases are covered by the features of libTML. The example in this chapte
 <a name="howtouse"></a>
 ## How to use the library ##
 
-The libTML-java library provides access to the libtml-c low level functions through usage of the Java Native Interface (JNI). Two fundamental libraries are available. TML (The Missing Link) provides the messaging and network functions and SIDEX (Simple Data Exchange) provides the API to access message data. After installing the libraries, Java is able to load the native libraries at runtime.
+The libTML-java library provides access to the libtml-c low level functions through usage of the Java Native Interface (JNI). Two fundamental libraries are available.
+ 
+- TML (The Missing Link) provides the messaging and network functions.
+- SIDEX (Simple Data Exchange) provides the API to access message data. 
+ 
+After installing the libraries, Java is able to load the native libraries at runtime.
 
 ~~~~{.java}
 //load the TML JNI libraries
@@ -307,23 +312,28 @@ The example shows the assignment of a list with a mixture of values including an
 
 <a name="comp&exec"></a>
 ## Compilation and execution of source code ##
-Inside the libtml-java/example directory is the source code of the example above located. To compile and execute it, change the directory to libtml-java/examples/introduction-01 and create the new folder 'class'. Then compile the java-files and put the compiled class-files into the 'class'-folder. Add the JAR file to the classpath during the compilation-call. To make the path to the JAR shorter, just copy and paste it into the directory /introduction-01.
+Inside the libtml-java/example directory is the source code of the example above located. To compile and execute it, change the directory to libtml-java/examples/introduction-01 and create the new folder 'class'. Then compile the java-files. You find the compiled class-files in the 'class'-folder. Add the JAR file (tmlSidex.jar) to the classpath during the compilation-call. To make the path to the JAR shorter, just copy it into the directory /introduction-01.
 
-*For example:* **compiling** *on windows or linux*: <br/>
-`javac -cp /path/to/JAR -d class server/*.java`
-`javac -cp /path/to/JAR -d class client/*.java`
-<br/>
+*For example:* **compiling** *on windows or linux*:
 
-Now open another terminal und execute first the Server an then the Client. They will communicate with each other.
+	javac -cp /path/to/JAR -d class server/*.java
+	javac -cp /path/to/JAR -d class client/*.java
+
+
+Now open two other terminals und execute the Server at first an then the Client. They will communicate with each other.
 Afterwards execute the main-file and set the JAR file to the classpath again. Add the location of your native libraries during your execution-call. Put them inside the same folder beforehand. The dependencies of the native libraries are inside this folder as well or they are globally accessible.
 
 
-**executing** *on windows*: <br/>
-`java -Djava.library.path=/path/to/nativeLibs -cp tmlSidex.jar;class server.Server` <br/>
-`java -Djava.library.path=/path/to/nativeLibs -cp tmlSidex.jar;class client.Client` <br/>
-*or linux*: <br/>
-`java -Djava.library.path=/path/to/nativeLibs -cp tmlSidex.jar:class server.Server`
-`java -Djava.library.path=/path/to/nativeLibs -cp tmlSidex.jar:class client.Client` <br/>
+**executing** *on windows*:
+
+	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR;class server.Server
+	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR;class client.Client
+
+*or linux*:
+
+	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR:class server.Server
+	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR:class client.Client
+
 
 
 [TMLCore]: @ref com.tmlsidex.tml.TMLCore "TMLCore"
@@ -331,12 +341,11 @@ Afterwards execute the main-file and set the JAR file to the classpath again. Ad
 [TMLProfile]: @ref com.tmlsidex.tml.TMLProfile "TMLProfile"
 [SDXDocument]: @ref com.tmlsidex.sidex.SDXDocument "SDXDocument"
 [profile.sendSyncMessage()]: @ref com.tmlsidex.tml.TMLProfile.sendSyncMessage() "sendSyncMessage()"
-[SDXDateTime]: @ref com.tmlsidex.sidex.SDXDateTime "SDXDateTime"
 [registerCmd()]: @ref com.tmlsidex.tml.TMLProfile.registerCmd() "registerCmd()"
 [TMLCmdIF]: @ref com.tmlsidex.tml.TMLCmdIF "TMLCmdIF"
 [profile.sendAsyncMessage()]: @ref com.tmlsidex.tml.TMLProfile.sendAsyncMessage() "profile.sendAsyncMessage()"
-[TMLCmdProgressReplyIF]: @ref com.tmlsidex.tml.TMLProgressReplyIF "TMLProgressReplyIF"
+[TMLCmdProgressReplyIF]: @ref com.tmlsidex.tml.TMLCmdProgressReplyIF "TMLCmdProgressReplyIF"
 [TMLCmdDispatchIF]: @ref com.tmlsidex.tml.TMLCmdDispatchIF "TMLCmdDispatchIF"
 [SDXBase]: @ref com.tmlsidex.sidex.SDXBase "SDXBase"
-[sendProgressReply()]: @ref com.tmlsidex.TMLCmd.sendProgressReply() "sendProgressReply()"
+[sendProgressReply()]: @ref com.tmlsidex.tml.TMLCmd.sendProgressReply() "sendProgressReply()"
 	
