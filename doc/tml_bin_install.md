@@ -1,4 +1,4 @@
-# Install libTML-java  binary package {#tml_bin_install}	
+# Install libTML-java binary package {#tml_bin_install}	
 
 Currently the following libTML-java binary packages are tested:
 
@@ -54,7 +54,7 @@ The installation destination folder contains
 	- **packages\\Delphi**	Delphi component source files
 
 
-[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+[The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
 
 ----------
@@ -81,7 +81,7 @@ The libTML-java debian package installation contains
 - shared libraries for the Java Native Interface installed to folder `"/usr/lib"` 
 
 
-[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+[The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
 
 ----------
@@ -90,26 +90,8 @@ The libTML-java debian package installation contains
 <a name="OsxLink"></a>
 ## OS-X Disk Image ##
 
-## Installation steps: ###
-
  - Download the TML Messaging Suite disk image file (.dmg) onto your OS-X target system
  - Mount the disk image file
- - Copy shared libraries:
-   - on a 32 bit environment
-   		-  copy **1)** the directory content of `"/Volumes/libtml/usr/lib32"` to the folder `"/usr/lib"`
-   - on a 64 bit environment
-   		-  copy **2)** the directory content of `"/Volumes/libtml/usr/lib64"` to the folder `"/usr/lib"`
-
-
-**1)** on the command shell out of "superuser mode":
-
-	cp /Volumes/libtml/usr/lib32/* /usr/lib
-
-
-**2)** on the command shell out of "superuser mode":
-
-	cp /Volumes/libtml/usr/lib64/* /usr/lib
-
 
 ## OS-X installation content ##
 The mounted TML Messaging Suite disk image file contains
@@ -128,8 +110,26 @@ The mounted TML Messaging Suite disk image file contains
 	- `"src"`	component source files
 	- `"packages/Lazarus"`	Lazarus component source files
 
+##Copy shared library files##
 
-[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+- on a 32 bit environment
+	- copy **1)** the directory content of `"/Volumes/libtml/usr/lib32"` to the folder `"/usr/lib"`
+
+- on a 64 bit environment
+	- copy **2)** the directory content of `"/Volumes/libtml/usr/lib64"` to the folder `"/usr/lib"`
+
+
+**1)** on the command shell out of "superuser mode":
+
+	cp /Volumes/libtml/usr/lib32/* /usr/lib
+
+
+**2)** on the command shell out of "superuser mode":
+
+	cp /Volumes/libtml/usr/lib64/* /usr/lib
+
+
+[The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
 
 ----------
@@ -155,7 +155,7 @@ The libTML-java freeBSD package installation contains
 
 - shared libraries for the Java Native Interface installed to folder  `"/usr/lib"`
 
-[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+[The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
 
 ----------
