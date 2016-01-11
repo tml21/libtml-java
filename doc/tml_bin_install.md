@@ -128,6 +128,21 @@ The mounted TML Messaging Suite disk image file contains
 
 	cp /Volumes/libtml/usr/lib64/* /usr/lib
 
+##System Integrity Protection - using OS X 10.11 (El Capitan)##
+
+If the System Integrity Protection is enabled (default on El Capitan), root is not permitted to copy to `"/usr/lib"`.
+    
+To disable System Integrity Protection, you must boot to Recovery OS and run the csrutil(1) command from the Terminal.<br>[See:Configuring System Integrity Protection](https://developer.apple.com/library/mac/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html).
+
+- Boot to Recovery OS by restarting your machine and holding down the Command and R keys at startup.
+- Launch Terminal from the Utilities menu.
+- Enter the following command:
+
+		$ csrutil disable
+
+After disabling System Integrity Protection on a machine, a reboot is required.    
+
+
 
 [The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
