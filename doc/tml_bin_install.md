@@ -7,8 +7,6 @@ Currently the following libTML-java binary packages are tested:
 - [OS-X](#OsxLink)
 - [freeBSD libtml-java](#freeBSDLink)
 
-Please read also the [additional notes referring to JNI](#javaLink) .
-
 
 <a name="WinLink"></a>
 ## Windows installer (32/64 bit) ##
@@ -55,6 +53,12 @@ The installation destination folder contains
 	- **packages\\C++ Builder**	C++ Builder component source files
 	- **packages\\Delphi**	Delphi component source files
 
+
+[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+<br><br>
+
+----------
+
 <a name="debianLink"></a>
 ## Debian package dependencies  ##
 
@@ -75,6 +79,13 @@ The libTML-java debian package installation contains
 
 
 - shared libraries for the Java Native Interface installed to folder `"/usr/lib"` 
+
+
+[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+<br><br>
+
+----------
+
 
 <a name="OsxLink"></a>
 ## OS-X Disk Image ##
@@ -117,6 +128,12 @@ The mounted TML Messaging Suite disk image file contains
 	- `"src"`	component source files
 	- `"packages/Lazarus"`	Lazarus component source files
 
+
+[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+<br><br>
+
+----------
+
 <a name="freeBSDLink"></a>
 ## freeBSD package dependencies  ##
 
@@ -137,6 +154,11 @@ The libTML-java freeBSD package installation contains
 
 
 - shared libraries for the Java Native Interface installed to folder  `"/usr/lib"`
+
+[After libTML-java binary package installation is finished, continue reading chapter "JNI" of this documentation.](#javaLink) 
+<br><br>
+
+----------
 
 <a name="javaLink"></a>
 ## JNI ##
