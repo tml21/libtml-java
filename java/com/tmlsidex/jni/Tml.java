@@ -1504,7 +1504,7 @@ public class Tml {
   }
   
   /**
-   * @bief open a receiver stream
+   * @brief open a receiver stream
    * 
    * @param coreHandle  TML core handle (TML_CORE_HANDLE) 
    * @param iID   clear stream identification 
@@ -2254,6 +2254,7 @@ public class Tml {
    * might result in unpredictable behavior.
    * 
    * @param cmdHandle  TML command handle (TML_COMMAND_HANDLE)
+   * @param mode       execution mode
    *  
    * @throws TmlSidexException 
    */
