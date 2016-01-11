@@ -28,8 +28,6 @@ During this step the TML Messaging Suite will be installed to the chosen destina
 ### Installation step "Finalizing installation"###
 The TML Messaging Suite is ready to be used.
 
-**Note:** The Windows binary installer doesn't change the Windows path environment.
-
 
 ## Windows installation content ##
 The installation destination folder contains
@@ -53,6 +51,13 @@ The installation destination folder contains
 	- **packages\\C++ Builder**	C++ Builder component source files
 	- **packages\\Delphi**	Delphi component source files
 
+Furthermore the libtml-java dynamic link library files are installed into the system folder
+
+- **Windows**
+	- **System32** (Windows 32 bit & Windows 64 bit target platform)
+	- **SysWOW64** (Windows 64 bit target platform)
+
+**Note:** The Windows binary installer doesn't change the Windows path environment.
 
 [The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
 <br><br>
