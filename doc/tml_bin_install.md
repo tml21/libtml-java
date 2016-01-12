@@ -182,21 +182,38 @@ The libTML-java freeBSD package installation contains
 
 <a name="javaLink"></a>
 ## JNI ##
-To use the libTML-java library in a project, the project needs to include two components. After the binary package installation you have the first one, the native libraries. The second component contains the JNI(Java Native Interface) functions calling particular native functions. To include the native libraries, they are set in the java library path during the call for execution. The JNI functions are included as an archive during both the compilation and the execution. 
+The Java Native Interface consists of a `"Java part"` and a `"C part"`. 
+
+- `"java Part"`  - is a Java class with native methods calling a C library
+- `"C part"` - is a library written in C that implements the native methods calling "other C library" API's. In our case the "other C libraries" are the content of the libTML-c binary package.
+
+
+The libTML-java binary package installs the `"C part"` of the JNI.
+
+- jniSidex11 library
+- jniTml11 library
+
+The `"java Part"` of the JNI has to be build explicitly out of our JNI Java source files using the *Java Development Kit* (JDK).
+ 
 
 ### The JNI source files ###
- In case of a Windows binary package installation, you have already the JNI sources in the destination subfolder `"/java"`.
- 
- In case of an OS-X binary package installation, you have already the JNI sources in the mounted disk image subfolder `"/java"`. Copy it onto your target system.
 
- In case of debian or freeBSD you can  [download the JNI sources from GitHub](https://github.com/tml21/libtml-java). Download the ZIP archive and extract the subfolder `"/java"` on your target system.
+- **Windows:** In case of a Windows binary package installation, you find the JNI Java sources in the destination subfolder `"/java"`
+- **OS-X:** In case of an OS-X binary package installation, you find the JNI Java sources in the mounted disk image subfolder `"/java"`. Copy it onto your target system.
+- **Debian or freeBSD:** In case of Debian or freeBSD you can  [download the JNI Java sources from GitHub](https://github.com/tml21/libtml-java). Download the ZIP archive and extract the subfolder `"/java"` onto your target system.
  
 ### creating a JAR ###
- If you don't already have a *Java Development Kit*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. The following description is one way on how to build a JAR. 
- First change into the directory /java/com/tmlsidex/ and create a new folder, for example named 'class'. Then generate a txt-file with the pathnames of all java-files that exist in the subfolders in your present directory. Afterwards compile all java-files with the help of the txt-file, writing the output into the recently created 'class'-folder. Eventually change into the 'class'-folder and create the JAR file. <br/>
+Running a Java program using package of Java classes it is usual to bind them into a Java archive (JAR). If you don't already have a *JDK*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. 
+
+The following description is a way on how to build a Java Archive (JAR) out of our JNI Java sources. 
+
+- Change into the directory `/java/com/tmlsidex/` and create a new folder, for example  'class'. 
+- Generate a text file with the pathnames of all java files that exist in the subfolders of the present directory. 
+- Compile all java files using that text file writing the output into the recently created 'class' folder. 
+- Create the JAR file named tmlSidex.jar.
 
 
-*For example on linux and OS-X platforms*:
+*Example on linux and OS-X platforms*:
 
 	mkdir class
 	find . -name "*.java" > targetList.txt
@@ -205,7 +222,7 @@ To use the libTML-java library in a project, the project needs to include two co
 	jar cf tmlSidex.jar com
 
 
-*on windows:*
+*Example on windows:*
 
 	mkdir class
 	dir /s /B *.java > targetList.txt
@@ -214,5 +231,7 @@ To use the libTML-java library in a project, the project needs to include two co
 	jar cf tmlSidex.jar com
 
 
-> If the pathname contains blanks, you have to **edit targetList.txt**, **set lines into quotes** and **replace backslashes to slashes** before using javac.
+> If the pathname contains blanks, you have to edit the text file **targetList.txt**, set each line lines into **quotes** and replace **backslashes to slashes** before using the javac compiler.
 
+
+Please read the documentation [Introduction to libTML-java](\ref tml_intro) to get information of how to use the library.
