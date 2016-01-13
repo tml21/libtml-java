@@ -45,7 +45,9 @@ Set library directories:
 	LINK_DIRECTORIES("X:\\workdir\\libtml-c\\build\\win_x86-32\\sidex\\Release"
                      "X:\\workdir\\libtml-c\\build\\win_x86-32\\tml\\Release")
 
+<br>
 
+----------
 
 <a name="WinLink"></a>
 ## Build libTML-java on Windows ##
@@ -57,6 +59,9 @@ To build libTML-java on Windows either Visual Studio or MinGW can be uses.
 	- [Build MinGW64](#MinGWLink64)
 	- [Build with Visual Studio](#WinVCLink)
 
+<br>
+
+----------
 
 <a name="MinGWLink"></a>
 ### Build with MinGW ###
@@ -82,6 +87,10 @@ Extract the package but do not overwrite the previous 32 bit MinGW installation.
  Use the `win_mingw64.cmake` tool chain to set the compiler path for win64 binary build.
  (see [Build libTML-java win64 with MinGW](#MinGWLink64))
 
+<br>
+
+----------
+
 <a name="MinGWLink32"></a>
 ### Build libTML-java win32 with MinGW ###
 
@@ -106,6 +115,11 @@ To build libTML-java win32 binaries on Windows with MinGW, the settings for the 
 		- `build\win_x86-32_mingw\sidex\jniSidex11.dll`
 		- `build\win_x86-32_mingw\tml\jniTml11.dll`
 
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
 <a name="MinGWLink64"></a>
 ### Build libTML-java win64 with MinGW ###
 
@@ -129,6 +143,11 @@ To build libTML-java win64 binaries on Windows with MinGW, the settings for the 
 	- the binaries are located in:
 		- `build\win_x86-64_mingw\sidex\jniSidex11.dll`
 		- `build\win_x86-64_mingw\tml\jniTml11.dll`
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
 
 <a name="WinVCLink"></a>
 ## Build libTML-java on Windows with Visual Studio ##
@@ -160,6 +179,12 @@ To build libTML-java win64 binaries on Windows with MinGW, the settings for the 
 		- `build\win_x86-64\tml\Release\jniTml11.dll`
 		- `build\win_x86-64\tml\Release\jniTml11.lib`
 
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
 <a name="LinuxLink"></a>
 ## Build libTML-java on LINUX x86 ##
 
@@ -187,6 +212,13 @@ To build libTML-java win64 binaries on Windows with MinGW, the settings for the 
 
 
 - Install the libraries (superuser required)<br/>`make install`<br/>or<br/>`sudo make install`
+
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
 
 <a name="OsxLink"></a>
 ## Build libTML-java on OS X ##
@@ -216,6 +248,12 @@ To build libTML-java win64 binaries on Windows with MinGW, the settings for the 
 
 - Install the libraries (superuser required)<br/>`make install`<br/>or<br/>`sudo make install`
 
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
 <a name="linuxArmLink"></a>
 ## Build libTML-java on LINUX ARM ##
 
@@ -235,6 +273,12 @@ To build libTML-java win64 binaries on Windows with MinGW, the settings for the 
 
 
 - Install the libraries (superuser required)<br/>`make install`<br/>or<br/>`sudo make install`
+
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
 
 <a name="AndroidLink"></a>
 ## libTML-java cross build for Android ##
@@ -269,6 +313,12 @@ A cross compile for Android on Windows requires [MinGW](http://www.mingw.org/) w
 	- `build\android_arm32\sidex\libjniSidex11.so`
 	- `build\android_arm32\tml\libjniTml11.so`
 
+
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
 <a name="freeBSDLink"></a>
 ## Build libTML-java on freeBSD x86 ##
 
@@ -297,23 +347,62 @@ A cross compile for Android on Windows requires [MinGW](http://www.mingw.org/) w
 
 - Install the libraries (superuser required)<br/>`make install`<br/>or<br/>`sudo make install`
 
-## Java ##
-To use the libTML-java library in a project, the project needs to include two components. You already generated the first one, the native libraries. The second component contains the JNI(Java Native Interface) functions calling particular native functions. To include the native libraries, they are set in the java library path during the call for execution. The JNI functions are included as an archive during both the compilation and the execution. 
 
+[Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
+<br><br>
+
+----------
+
+<a name="javaLink"></a>
+## JNI ##
+The Java Native Interface consists of a `"Java part"` and a `"C part"`. 
+
+- `"java Part"`  - is a Java class with native methods calling a C library
+- `"C part"` - is a library written in C that implements the native methods calling "other C library" API's. In our case the "other C libraries" are the content of libTML-c.
+
+
+The libTML-java build description above leads to the `"C part"` of the JNI.
+
+- jniSidex11 library
+- jniTml11 library
+
+The `"java Part"` of the JNI has to be build explicitly out of our JNI Java source files using the *Java Development Kit* (JDK).
+ 
+
+### The JNI source files ###
+
+You find the JNI Java sources in the subfolder `"/java"`.
+ 
 ### creating a JAR ###
- If you don't already have a *Java Development Kit*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. The following description is one way on how to build a JAR. First change into the directory /libtml-java/java/com/tmlsidex/ and create a new folder, for example named 'class'. Then generate a txt-file with the pathnames of all java-files that exist in the subfolders in your present directory. Afterwards compile all java-files with the help of the txt-file, writing the output into the recently created 'class'-folder. Eventually change into the 'class'-folder and create the JAR file. <br/>
+Running a Java program using package of Java classes it is usual to bind them into a Java archive (JAR). If you don't already have a *JDK*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. 
 
-*For example on windows (pathname must not include blanks)*: <br/>
-`mkdir class` <br/>
-`dir /s /B *.java > targetList.txt` <br/>
-`javac -cp class -d class @targetList.txt` <br/>
-`cd class` <br/>
-`jar cf tmlSidex.jar com` <br/>
+The following description is a way on how to build a Java Archive (JAR) out of our JNI Java sources. 
 
-*or linux*: <br/>
-`mkdir class` <br/>
-`find $(pwd) -name "*.java" > targetList.txt` <br/>
-`javac -cp class -d class @targetList.txt` <br/>
-`cd class` <br/>
-`jar cf tmlSidex.jar com` <br/>
+- Change into the directory `/java/com/tmlsidex/` and create a new folder, for example  'class'. 
+- Generate a text file with the pathnames of all java files that exist in the subfolders of the present directory. 
+- Compile all java files using that text file writing the output into the recently created 'class' folder. 
+- Create the JAR file named tmlSidex.jar.
 
+
+*Example on linux and OS-X platforms*:
+
+	mkdir class
+	find . -name "*.java" > targetList.txt
+	javac -cp class -d class @targetList.txt
+	cd class
+	jar cf tmlSidex.jar com
+
+
+*Example on windows:*
+
+	mkdir class
+	dir /s /B *.java > targetList.txt
+	javac -cp class -d class @targetList.txt
+	cd class
+	jar cf tmlSidex.jar com
+
+
+> If the pathname contains blanks, you have to edit the text file **targetList.txt**, set each line lines into **quotes** and replace **backslashes to slashes** before using the javac compiler.
+
+
+Please read the documentation [Introduction to libTML-java](\ref tml_intro) to get information of how to use the library.
