@@ -3,34 +3,15 @@
 Currently the following libTML-java binary packages are tested:
 
 - [Windows](#WinLink)
-- [debian libtml-java](#debianLink)
+- [debian](#debianLink)
 - [OS-X](#OsxLink)
-- [freeBSD libtml-java](#freeBSDLink)
+- [freeBSD](#freeBSDLink)
 
 
 <a name="WinLink"></a>
 ## Windows installer (32/64 bit) ##
 
-Download the TML Messaging Suite Windows binary installer and launch it on your Windows target system. It supports both, 32 bit and 64 bit Windows systems.
-
-Using the wizard based installer you are able to
-
-- navigate to the next setup wizard page using the “Next” button.
-- navigate to the previous setup wizard page using the “Back” button.
-- terminate the setup wizard session by using the “Cancel” button.
-
-### Installation step "Welcome page"###
-Welcome & introduction of TML Messaging Suite installer.
-### Installation step "License agreement page"###
-License agreement of TML Messaging Suite.
-### Installation step "Destination folder page"###
-Select the installation destination folder.
-### Installation step "Ready to start installation page"###
-Click `"Next"` to start the installation.
-### Installation step "Installation progress page"###
-Installation progress information.
-### Installation step "Complete page"###
-Now the TML Messaging Suite is ready to be used.
+The TML Messaging Suite Windows binary installer supports both, 32 bit and 64 bit Windows systems. Download and and launch it on your Windows target system. Follow the instructions.
 
 
 ## Windows installation content ##
@@ -119,6 +100,20 @@ The mounted TML Messaging Suite disk image file contains
 	- `"src"`	component source files
 	- `"packages/Lazarus"`	Lazarus component source files
 
+##System Integrity Protection - using OS X 10.11 (El Capitan)##
+
+If the System Integrity Protection is enabled (default on El Capitan), root is not permitted to copy to `"/usr/lib"`.
+    
+To disable System Integrity Protection, you must boot to Recovery OS and run the csrutil(1) command from the Terminal.<br>[See:Configuring System Integrity Protection](https://developer.apple.com/library/mac/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html).
+
+- Boot to Recovery OS by restarting your machine and holding down the Command and R keys at startup.
+- Launch Terminal from the Utilities menu.
+- Enter the following command:
+
+		$ csrutil disable
+
+After disabling System Integrity Protection on a machine, a reboot is required.    
+
 ##Copy shared library files##
 
 - on a 32 bit environment
@@ -136,21 +131,6 @@ The mounted TML Messaging Suite disk image file contains
 **2)** on the command shell out of "superuser mode":
 
 	cp /Volumes/libtml/usr/lib64/* /usr/lib
-
-##System Integrity Protection - using OS X 10.11 (El Capitan)##
-
-If the System Integrity Protection is enabled (default on El Capitan), root is not permitted to copy to `"/usr/lib"`.
-    
-To disable System Integrity Protection, you must boot to Recovery OS and run the csrutil(1) command from the Terminal.<br>[See:Configuring System Integrity Protection](https://developer.apple.com/library/mac/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html).
-
-- Boot to Recovery OS by restarting your machine and holding down the Command and R keys at startup.
-- Launch Terminal from the Utilities menu.
-- Enter the following command:
-
-		$ csrutil disable
-
-After disabling System Integrity Protection on a machine, a reboot is required.    
-
 
 
 [The libTML-java binary package installation is finished now. Continue reading chapter "JNI" of this documentation, building the Java archive (JAR).](#javaLink) 
