@@ -7,6 +7,9 @@ Currently the following libTML-java binary packages are tested:
 - [OS-X](#OsxLink)
 - [freeBSD](#freeBSDLink)
 
+<br>
+
+----------
 
 <a name="WinLink"></a>
 ## Windows installer (32/64 bit) ##
@@ -52,9 +55,9 @@ Furthermore the libtml-java dynamic link library files are installed into the sy
 <a name="debianLink"></a>
 ## Debian package dependencies  ##
 
-The libTML-java debian package depends on the  libTML-c debian package.
+The libTML-java debian package depends on the libTML-c debian package.
 
-So install the libTML-c debian package first.
+Install the libTML-c debian package and the packages it depends on first.
 
 ## libTML-java debian package ##
 Download the libTML-java package onto your target system.
@@ -143,7 +146,7 @@ After disabling System Integrity Protection on a machine, a reboot is required.
 
 The libTML-java freeBSD package depends on the  libTML-c freeBSD package.
 
-So install the libTML-c freeBSD package first.
+Install the libTML-c freeBSD package and the packages it depends on first
 
 ## libTML-java freeBSD package ##
 Download the libTML-java freeBSD package onto your target system.
