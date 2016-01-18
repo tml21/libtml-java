@@ -356,13 +356,13 @@ A cross compile for Android on Windows requires [MinGW](http://www.mingw.org/) w
 
 <a name="javaLink"></a>
 ## JNI ##
-The Java Native Interface consists of a `"Java part"` and a `"C part"`. 
+The Java Native Interface consists of a `"Java part"` and a `"C part"`:
 
 - `"java Part"`  - is a Java class with native methods calling a C library
 - `"C part"` - is a library written in C that implements the native methods calling "other C library" API's. In our case the "other C libraries" are the content of libTML-c.
 
 
-The libTML-java build description above leads to the `"C part"` of the JNI.
+The libTML-java build description above leads to the `"C part"` of the JNI (native libraries):
 
 - jniSidex11 library
 - jniTml11 library
@@ -382,7 +382,7 @@ The following description is a way on how to build a Java Archive (JAR) out of o
 - Change into the directory `/java/com/tmlsidex/` and create a new folder, for example  'class'. 
 - Generate a text file with the pathnames of all java files that exist in the subfolders of the present directory. 
 - Compile all java files using that text file writing the output into the recently created 'class' folder. 
-- Create the JAR file named tmlSidex.jar.
+- Create the JNI Java Archive / JAR file named **tmlSidex.jar**.
 
 
 *Example on linux and OS-X platforms*:
