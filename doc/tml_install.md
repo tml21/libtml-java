@@ -93,7 +93,7 @@ Extract the package but do not overwrite the previous 32 bit MinGW installation.
 ----------
 
 <a name="MinGWLink32"></a>
-### Build libTML-java win32 with MinGW ###
+## Build libTML-java win32 with MinGW ##
 
 To build libTML-java win32 binaries on Windows with MinGW, the settings for the tool chain have to be adjusted. CMake needs the information where to find win32 compiler. Edit the tool chain file `win_mingw32.cmake`. The file is located in libtml-java/src.
 
@@ -122,7 +122,7 @@ To build libTML-java win32 binaries on Windows with MinGW, the settings for the 
 ----------
 
 <a name="MinGWLink64"></a>
-### Build libTML-java win64 with MinGW ###
+## Build libTML-java win64 with MinGW ##
 
 To build libTML-java win64 binaries on Windows with MinGW, the settings for the tool chain have to be adjusted. CMake needs the information where to find win64 compiler. Edit the tool chain file `win_mingw64.cmake`. The file is located in libtml-java/src.
 

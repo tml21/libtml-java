@@ -14,7 +14,7 @@
 
 Many use cases are covered by the features of libTML. The example described in this chapter is a brief overview of the most frequently used functions. 
 
-> You can find the example source code in directory `"/examples/introduction-01"` of our [libTML-java source repository on GitHub](https://github.com/tml21/libtml-java). <br>All examples in this introduction contain only code lines to explain a special aspect of the library. Important things may be left out in favor of better readability.  
+> You can find the example source code in directory `"/examples/introduction-01"` of our [libTML-java source repository on GitHub](https://github.com/tml21/libtml-java). <br>All examples in this introduction contain only code lines to explain a special aspect of the library. Some things may be left out in favor of better readability.  
 
 <a name="howtouse"></a>
 ## How to use the library ##
@@ -263,7 +263,7 @@ The output from the receiving thread (listener) would be:
 The SIDEX API (Simple Data Exchange) provides powerful functions to organize data. Any [TMLCmd] instance has its data stored in the [SDXDocument] available through the data property.
 
 ~~~~{.java}
-// create a TMLCmd:
+// Create a TMLCmd:
 TMLCmd cmd42 = new TMLCmd(42);
 .
 .
