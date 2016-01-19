@@ -3,18 +3,18 @@
 * [How to use the library](#howtouse)
 * [Implementing the Interface](#firstprofile)
 	* [Create and prepare a TML core and profile](#prepcoreprofile)
-	* [Add command handler functions](#addcommand)
+	* [Add command handler (listener)](#addcommand)
 	* [Start the Listener](#startlistener)
-* [Calling the Interface](#callinterface)
+* [Sending commands (sender)](#callinterface)
 	* [Receiving progress replies](#recprogress)
 * [Using the data property and variants](#dataproperty)
 	* [Add Lists and Dictionaries](#listdictdata)
-* [Compilation and execution of source code](#comp&exec)
+* [Compilation and execution of example source code](#comp&exec)
 
 
-Many use cases are covered by the features of libTML. The example in this chapter is a brief overview of the most frequently used functions.
+Many use cases are covered by the features of libTML. The example described in this chapter is a brief overview of the most frequently used functions. 
 
-> All examples in this introduction contain only code lines to explain a special aspect of the library. Important things may be left out in favor of better readability. 
+> You can find the example source code in directory `"/examples/introduction-01"` of our [libTML-java source repository on GitHub](https://github.com/tml21/libtml-java). <br>All examples in this introduction contain only code lines to explain a special aspect of the library. Some things may be left out in favor of better readability.  
 
 <a name="howtouse"></a>
 ## How to use the library ##
@@ -35,7 +35,7 @@ static {
 ~~~~
  
 Using the low level API is similar to the C API in most aspects. The error handling is different in Java. Low level functions do not return an error code but raise an exception instead.
-The usage of low level functions is discussed more deeply in the [C API documentation](http://libtml.org/docs/libtml-c-html/). 
+A more in depth discussion on using the low level functions can be found in the [C API documentation](http://libtml.org/docs/libtml-c-html/). 
 
 <a name="firstprofile"></a>
 ## Implementing the Interface ##
@@ -45,7 +45,7 @@ The TML communication is peer to peer (P2P) and the Client/Server pattern is a s
 <a name="prepcoreprofile"></a>
 ### Create and prepare a TML core and profile ###
 
-To use TML at least one [TMLCore] object is required. To accept incoming traffic the listener thread needs an IP address, port and one or more profiles to be published.  A TML profile is the interface to refer to by a remote call. The call to the constructor of both TMLCore and TMLProfile need to be inside a try-catch code block.
+To use TML at least one [TMLCore] object is required. To accept incoming traffic the listener thread needs an IP address, port and one or more  registered profiles. A TML profile is the interface to refer to by a remote call. The call to the constructor of both TMLCore and TMLProfile need to be inside a try-catch code block.
 
 ~~~~{.java}
 TMLCore tmlcore = new TMLCore();
@@ -53,7 +53,7 @@ tmlcore.setlistenerIP("127.0.0.1");
 tmlcore.setlistenerPort("1234");
 ~~~~
     
-To identify a profile as a unique interface, a unique profile name (ID) is required. Any string can be used, but usually a URN is selected. In this example `urn:your-domain:com:javaExample01` is used.
+To identify a profile as a unique interface, a unique profile name (ID) is required. Any string can be used, but usually a URN is selected.
 
 ~~~~{.java}
 String profileid = 'urn:your-domain:com:javaExample01';
@@ -66,9 +66,13 @@ TMLProfile profile = new TMLProfile(profileid, tmlcore);
 ~~~~
 
 <a name="addcommand"></a>
-### Add command handler ###
+### Add command handler (listener) ###
 
-A command handler implements one of the  TML command interfaces ([TMLCmdIF], [TMLCmdDispatchIF],...) and an instance of the handler will be assigned as parameter during the publishing to the profile.
+Interfaces are used to implement callback functions in Java .
+
+A command handler instance implements one of the  TML command interfaces ([TMLCmdIF], [TMLCmdDispatchIF],...).
+It will be invoked in case of an incoming command.
+
 
 ~~~~{.java}
 //handler implementing a TML command interface
@@ -123,7 +127,7 @@ public class Cmd43Handler implements TMLCmdDispatchIF{
 }
 ~~~~
 
-To publish a [TMLCmdIF] an instance is added to a profile using the [registerCmd()] method of the [TMLProfile] instance.
+To register a [TMLCmdIF], its instance has to be added to a profile using the [registerCmd()] method of the [TMLProfile] class (second parameter).
 
 ~~~~{.java}
 //publishing handlers to profile
@@ -131,12 +135,11 @@ profile.registerCmd(42, new Cmd42Handler(), null);
 profile.registerCmd(43, new Cmd43Handler(), null);
 ~~~~
 
-The third parameter of [registerCmd()] holds custom callback data. The callback data can be for example a date or just null.	
+The first parameter represents the "command Id".<br>For example Id 42 invokes the interface implementation of Cmd42Handler().<br>
+The third parameter of [registerCmd()] holds custom callback data. The custom callback data can be for example a date or just null.	
 
 <a name="startlistener"></a>
 ### Start the Listener ###
-
-Eventually the listener is started to publish the commands to the network. TML uses multiple threads for parallel execution of the listeners. Meanwhile the main thread needs to wait or can do different things. The `Thread.sleep(15000)` function in this example waits 15 seconds until it terminates. In programs it can easily be replaced with the application loop.
 
 ~~~~{.java}
 tmlcore.setListenerEnabled(true);
@@ -144,11 +147,12 @@ tmlcore.setListenerEnabled(true);
 Thread.sleep(15000);
 ~~~~	
 
+The listener is started to receive the commands via the network. TML uses an explicit listener thread. Meanwhile the main thread needs to wait or can do different things. The `Thread.sleep(15000)` function in the example waits 15 seconds until it terminates. In programs it can easily be replaced with the application loop.
 
 <a name="callinterface"></a>
-## Calling the Interface ##
+## Sending commands (sender) ##
 
-To call a particular interface a TCP/IP address and a profile ID is required. 
+To send a command, a TCP/IP address and a profile ID is required. 
 
 ~~~~{.java}
 String profileid = "urn:your-domain:com:javaExample01";
@@ -156,7 +160,7 @@ String preference_ip = "127.0.0.1";
 String preference_port = "1234";
 ~~~~
 
-The [TMLCore] is handling inbound and outbound messages. Before sending a command an instance of [TMLCore] is created. The profile can only be constructed after the creation of the [TMLCore].
+The [TMLCore] is handling inbound and outbound messages. Before sending a command an instance of [TMLCore] has to be created. Afterwards the profile has to be instantiated using the [TMLCore] instance as a parameter.
 
 ~~~~{.java}
 TMLCore tmlcore = new TMLCore();
@@ -165,7 +169,8 @@ TMLProfile profile = new TMLProfile(profileid, tmlCore);
 
 > Use the same [TMLCore] instance as long as the application is sending/receiving messages to keep the connections open. Reusing connections is much faster than starting a TCP/IP connection every time a message is sent.
 
-Before sending a command, a [TMLCmd] object is created with the command ID of the remote interface function. It is send with the [profile.sendSyncMessage()] method of [TMLProfile]. Using synchronous calls with [profile.sendSyncMessage()] waits until a reply was received or an error occurs before returning. In case of an error an exception is raised.
+Data and the "command Id" can be configured using a [TMLCmd] object and send with the [profile.sendSyncMessage()] method of [TMLProfile].<br>
+Using synchronous calls, [profile.sendSyncMessage()] waits until its reply has been received or an error occurred. In case of an error an exception is raised.
 
 ~~~~{.java}
 //creating command 42
@@ -197,9 +202,9 @@ cmd42.releaseData();
 <a name="recprogress"></a>
 ### Receiving progress replies ###
 
-TML allows to send back status or progress replies to the caller. Besides providing information about the status of the command processing at the remote peer, progress replies reset the timeout passed to the [profile.sendSyncMessage()] or [profile.sendAsyncMessage()] method. In cases of long or unknown reply times, the receiver can keep the sender waiting.
+TML allows to send asynchronous status or progress replies to the calling instance using [sendStatusReply()] or [sendProgressReply()] respectively. Aside from providing status or progress information, the peer's timeout is reset each time a reply is received. In cases of long or unknown reply times, the receiver can keep the sender waiting without raising a timeout error.
 
-The timeout watchdog reset is performed by [sendProgressReply()] whether the progress reply is handled or a handler is registered or not. A progress handler needs to implement [TMLCmdProgressReplyIF] and is used to visualize the progress or any additional data. 
+To visualize the progress and / or additional data, a progress handler needs to implement the [TMLCmdProgressReplyIF] interface. 
 
 ~~~~{.java}
 //progress handler-class
@@ -214,8 +219,7 @@ public class Cmd43ProgressHandler implements TMLCmdProgressReplyIF{
 }
 ~~~~
 
-The progress handler is published to a [TMLCmd]. The first parameter (cmd) is the command instance currently processed by the remote peer and custom callback data or null is the second. The progress value is part of the command data, but it is passed for convenience as a third parameter.
-
+Register the progress handler to a [TMLCmd]:
 ~~~~{.java}
 //creating command and handler
 TMLCmd cmd43 = new TMLCmd(43);
@@ -224,15 +228,13 @@ Cmd43ProgressHandler progHandler = new Cmd43ProgressHandler();
 //registering handler
 cmd43.registerCmdProgressReply(progHandler, null);
 
-//calling the progress command
+//calling the progress command with a timeout value of 6000 ms
 profile.sendSyncMessage(preference_ip, preference_port, cmd43, 6000);
 System.out.println("Command 43 send");
 ~~~~
 
 
-> If the data of the command is modified either at sender (progress handler) or receiver side, the modifications are transferred together with the progress change. Applications can use this behavior to implement advanced features.
-
-A Java code calling the commands of the interface in this example is producing the output below.
+The Java code of our example calling the command with the ID "42" and "43" will produce the following output:
 
     cmd42 value before: [1, 2, drei, true]
 	Command 42 send
@@ -248,7 +250,7 @@ A Java code calling the commands of the interface in this example is producing t
 	Progress: 90
 	Command 43 send
 
-The output from the receiving thread would be as followed.
+The output from the receiving thread (listener) would be:
 
 	Command 42 received
 	cmd42 value: [1, 2, drei, true]
@@ -258,16 +260,31 @@ The output from the receiving thread would be as followed.
 <a name="dataproperty"></a>
 ## Using the data property and variants ##
 
-The SIDEX API (Simple Data Exchange) provides powerful functions to organize data. Any [TMLCmd] instance has it's data stored in the [SDXDocument] available through the data property.
+The SIDEX API (Simple Data Exchange) provides powerful functions to organize data. Any [TMLCmd] instance has its data stored in the [SDXDocument] available through the data property.
 
 ~~~~{.java}
-// create a SDXDocument
-SDXDocument doc = new SDXDocument("SDXDocTest");
+// Create a TMLCmd:
+TMLCmd cmd42 = new TMLCmd(42);
+.
+.
+.
+.
+// Acquire SDXDocument:
+SDXDocument sdoc = cmd42.acquireData();
+.
+.
+// Set data
+.
+.
+// Release SDXDocument:
+cmd42.releaseData();
+t doc = new SDXDocument("SDXDocTest");
 ~~~~
 
-An [SDXDocument] instance is storing data groups identified by a name (String). Each group can contain one or more values identified with keys (String). Value types can be integer, long, float, double, boolean, Integer, Long, Float, Double or [SDXBase]. The SIDEX variant types can be created and assigned like java values as well.
+A [SDXDocument] instance is storing data groups identified by a name (String). Each group can contain one or more values identified with keys (String). Value types can be integer, long, float, double, boolean, Integer, Long, Float, Double or [SDXBase].
 
 ~~~~{.java}
+// Set data
 sdoc.setValue("General", "int", 42);
 sdoc.setValue("General", "float", 3.14);
 sdoc.setValue("General", "bool", true); 
@@ -279,40 +296,49 @@ SDXDateTime sdxval = new SDXDateTime("2014-01-01 12:30:00:000");
 sdoc.setValue("General", "date", sdxval);
 ~~~~ 
 
-Reading data from a [SDXDocument] is just using the dictionary behavior and address the value with group and key names.
-
-~~~~{.java}
-System.out.println(sdoc.getValue("GroupName", "ValueName"));
-~~~~
-
-All values are automatically converted into java values.
-
 <a name="listdictdata"></a>
 ### Add Lists and Dictionaries ###
 
-Lists and dictionaries are powerful tools to create hierarchical data structures. The [SDXDocument] supports lists and dictionaries as well and they can simply be added by assignment.
+Lists and dictionaries are powerful tools to create hierarchical data structures. The [SDXDocument] supports lists and dictionaries, and they can simply be added by assignment.
 
 ~~~~{.java}
 SDXList sdx_list = new SDXList();
 sdx_list.appendValue(1);
 sdx_list.appendValue(2);
 sdx_list.appendValue("drei");
+sdx_list.appendValue(true);
+
 SDXList another_sdx_list = new SDXList();
 another_sdx_list.appendValue("vier");
 another_sdx_list.appendValue(5.5);
 sdx_list.appendValue(another_sdx_list);
+
 SDXDict dict = new SDXDict()
 dict.setValue("key", "value");
-dict.setValue("list", another_sdx_list);
-sdx_list.appendValue(true);
+dict.setValue("list", sdx_list);
+
+sdoc.setValue("General", "dictContainer", dict);
+
 ~~~~
 
-The example shows the assignment of a list with a mixture of values including another list and a dictionary type as values. 
+The example shows the assignment of a list with a mixture of values including another list and a dictionary type containing it all. 
+
+Reading data from a [SDXDocument] use of the dictionary behavior and addresses the value with group and key names.
+
+~~~~{.java}
+System.out.println(sdoc.getValue("General", "str"));
+~~~~
+
+All values are automatically converted into java values.
 
 
 <a name="comp&exec"></a>
-## Compilation and execution of source code ##
-Inside the libtml-java/example directory is the source code of the example above located. To compile and execute it, change the directory to libtml-java/examples/introduction-01 and create the new folder 'class'. Then compile the java-files. You find the compiled class-files in the 'class'-folder. Add the JAR file (tmlSidex.jar) to the classpath during the compilation-call. To make the path to the JAR shorter, just copy it into the directory /introduction-01.
+## Compilation and execution of example source code ##
+> Before the compilation and execution of the example code you need to install libTML-c and libTML-java.
+
+You can find the example source code in our [libTML-java source repository on GitHub](https://github.com/tml21/libtml-java). Download the ZIP archive and extract it.
+
+To compile and execute it, change to the directory `"/examples/introduction-01"` and create the new folder `"class"`. Add the JAR file (tmlSidex.jar) to the classpath during the compilation-call.
 
 *For example:* **compiling** *on windows or linux*:
 
@@ -320,9 +346,7 @@ Inside the libtml-java/example directory is the source code of the example above
 	javac -cp /path/to/JAR -d class client/*.java
 
 
-Now open two other terminals und execute the Server at first an then the Client. They will communicate with each other.
-Afterwards execute the main-file and set the JAR file to the classpath again. Add the location of your native libraries during your execution-call. Put them inside the same folder beforehand. The dependencies of the native libraries are inside this folder as well or they are globally accessible.
-
+Now execute the server instance on a terminal emulation window and the client instance on a second terminal emulation window. They will communicate with each other.
 
 **executing** *on windows*:
 
@@ -334,6 +358,20 @@ Afterwards execute the main-file and set the JAR file to the classpath again. Ad
 	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR:class server.Server
 	java -Djava.library.path=/path/to/nativeLibs -cp /path/to/JAR:class client.Client
 
+*) /path/to/nativeLib:
+
+The native libraries that you want to have on you library path are (see libTML-java installation):
+
+- jniSidex11 library
+- jniTml11 library
+
+
+
+*) /path/to/JAR:
+
+Path to JNI Java Archive / JAR file  (see libTML-java installation / JNI / creating a JAR):
+
+- tmlSidex.jar
 
 
 [TMLCore]: @ref com.tmlsidex.tml.TMLCore "TMLCore"
@@ -348,4 +386,6 @@ Afterwards execute the main-file and set the JAR file to the classpath again. Ad
 [TMLCmdDispatchIF]: @ref com.tmlsidex.tml.TMLCmdDispatchIF "TMLCmdDispatchIF"
 [SDXBase]: @ref com.tmlsidex.sidex.SDXBase "SDXBase"
 [sendProgressReply()]: @ref com.tmlsidex.tml.TMLCmd.sendProgressReply() "sendProgressReply()"
+[sendStatusReply()]: @ref com.tmlsidex.tml.TMLCmd.sendStatusReply() "sendStatusReply()"
+
 	

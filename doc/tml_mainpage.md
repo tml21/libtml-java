@@ -6,10 +6,10 @@
 
 ## Related Pages ##
 
-  - [License](\ref tml_license)
+  - [TML Library License](\ref tml_license)
   - [Install libTML-java binary package](\ref tml_bin_install)
   - [Install libTML-java from source](\ref tml_install)
-  - [Introduction](\ref tml_intro)
+  - [Introduction to libTML-java](\ref tml_intro)
 
 
 ## Library Documentation ##

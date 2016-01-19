@@ -1,4 +1,4 @@
-# Install libTML-java {#tml_install}
+# Install libTML-java from source{#tml_install}
 
 The libTML-java library is intended to be used on multiple platforms. CMake is used to simplify building, installing or creating project files for a preferred development environment and platform. All instructions in this section require to install [CMake](http://www.cmake.org/).
 You can download CMake here: [http://www.cmake.org/download/](http://www.cmake.org/download/)
@@ -17,6 +17,10 @@ Currently the following target systems are tested:
 		- [Build with MinGW32](#MinGWLink32)
 		- [Build with MinGW64](#MinGWLink64)
 	- [Build with Visual Studio](#WinVCLink) 
+
+<br>
+
+----------
 
 ## Library dependencies ##
 
@@ -59,9 +63,6 @@ To build libTML-java on Windows either Visual Studio or MinGW can be uses.
 	- [Build MinGW64](#MinGWLink64)
 	- [Build with Visual Studio](#WinVCLink)
 
-<br>
-
-----------
 
 <a name="MinGWLink"></a>
 ### Build with MinGW ###
@@ -92,7 +93,7 @@ Extract the package but do not overwrite the previous 32 bit MinGW installation.
 ----------
 
 <a name="MinGWLink32"></a>
-### Build libTML-java win32 with MinGW ###
+## Build libTML-java win32 with MinGW ##
 
 To build libTML-java win32 binaries on Windows with MinGW, the settings for the tool chain have to be adjusted. CMake needs the information where to find win32 compiler. Edit the tool chain file `win_mingw32.cmake`. The file is located in libtml-java/src.
 
@@ -121,7 +122,7 @@ To build libTML-java win32 binaries on Windows with MinGW, the settings for the 
 ----------
 
 <a name="MinGWLink64"></a>
-### Build libTML-java win64 with MinGW ###
+## Build libTML-java win64 with MinGW ##
 
 To build libTML-java win64 binaries on Windows with MinGW, the settings for the tool chain have to be adjusted. CMake needs the information where to find win64 compiler. Edit the tool chain file `win_mingw64.cmake`. The file is located in libtml-java/src.
 
@@ -355,13 +356,13 @@ A cross compile for Android on Windows requires [MinGW](http://www.mingw.org/) w
 
 <a name="javaLink"></a>
 ## JNI ##
-The Java Native Interface consists of a `"Java part"` and a `"C part"`. 
+The Java Native Interface consists of a `"Java part"` and a `"C part"`:
 
 - `"java Part"`  - is a Java class with native methods calling a C library
 - `"C part"` - is a library written in C that implements the native methods calling "other C library" API's. In our case the "other C libraries" are the content of libTML-c.
 
 
-The libTML-java build description above leads to the `"C part"` of the JNI.
+The libTML-java build description above leads to the `"C part"` of the JNI (native libraries):
 
 - jniSidex11 library
 - jniTml11 library
@@ -371,7 +372,7 @@ The `"java Part"` of the JNI has to be build explicitly out of our JNI Java sour
 
 ### The JNI source files ###
 
-You find the JNI Java sources in the subfolder `"/java"`.
+You find the JNI Java sources in the subfolder `"/java"` of the libTML-java source repository.
  
 ### creating a JAR ###
 Running a Java program using package of Java classes it is usual to bind them into a Java archive (JAR). If you don't already have a *JDK*, [download and install](http://www.oracle.com/technetwork/java/javase/downloads/index.html) it appropriately. Keep your platform (x86 or x64) in mind. 
@@ -381,7 +382,7 @@ The following description is a way on how to build a Java Archive (JAR) out of o
 - Change into the directory `/java/com/tmlsidex/` and create a new folder, for example  'class'. 
 - Generate a text file with the pathnames of all java files that exist in the subfolders of the present directory. 
 - Compile all java files using that text file writing the output into the recently created 'class' folder. 
-- Create the JAR file named tmlSidex.jar.
+- Create the JNI Java Archive / JAR file named **tmlSidex.jar**.
 
 
 *Example on linux and OS-X platforms*:
