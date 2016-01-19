@@ -35,7 +35,7 @@ static {
 ~~~~
  
 Using the low level API is similar to the C API in most aspects. The error handling is different in Java. Low level functions do not return an error code but raise an exception instead.
-The usage of low level functions is discussed more deeply in the [C API documentation](http://libtml.org/docs/libtml-c-html/). 
+A more in depth discussion on using the low level functions can be found in the [C API documentation](http://libtml.org/docs/libtml-c-html/). 
 
 <a name="firstprofile"></a>
 ## Implementing the Interface ##
@@ -45,7 +45,7 @@ The TML communication is peer to peer (P2P) and the Client/Server pattern is a s
 <a name="prepcoreprofile"></a>
 ### Create and prepare a TML core and profile ###
 
-To use TML at least one [TMLCore] object is required. To accept incoming traffic the listener thread needs an IP address, port and one or more  registered profiles. A TML profile is the interface to refer to by a remote call. The call to the constructor of both TMLCore and TMLProfile needs to be inside a try-catch code block.
+To use TML at least one [TMLCore] object is required. To accept incoming traffic the listener thread needs an IP address, port and one or more  registered profiles. A TML profile is the interface to refer to by a remote call. The call to the constructor of both TMLCore and TMLProfile need to be inside a try-catch code block.
 
 ~~~~{.java}
 TMLCore tmlcore = new TMLCore();
@@ -202,7 +202,7 @@ cmd42.releaseData();
 <a name="recprogress"></a>
 ### Receiving progress replies ###
 
-TML allows to reply asynchronous status or progress information to the calling instance using [sendStatusReply()] respectively [sendProgressReply()]. Aside from providing status or progress information, they reset the TML timeout watchdog. In cases of long or unknown reply times, the receiver can keep the sender waiting without falling into timeout.
+TML allows to send asynchronous status or progress replies to the calling instance using [sendStatusReply()] or [sendProgressReply()] respectively. Aside from providing status or progress information, the peer's timeout is reset each time a reply is received. In cases of long or unknown reply times, the receiver can keep the sender waiting without raising a timeout error.
 
 To visualize the progress and / or additional data, a progress handler needs to implement the [TMLCmdProgressReplyIF] interface. 
 
@@ -234,7 +234,7 @@ System.out.println("Command 43 send");
 ~~~~
 
 
-The Java code of our example calling the command with the ID "42" and "43" produce the following output:
+The Java code of our example calling the command with the ID "42" and "43" will produce the following output:
 
     cmd42 value before: [1, 2, drei, true]
 	Command 42 send
@@ -250,7 +250,7 @@ The Java code of our example calling the command with the ID "42" and "43" produ
 	Progress: 90
 	Command 43 send
 
-The output from the receiving thread (listener) would be as followed:
+The output from the receiving thread (listener) would be:
 
 	Command 42 received
 	cmd42 value: [1, 2, drei, true]
@@ -323,7 +323,7 @@ sdoc.setValue("General", "dictContainer", dict);
 
 The example shows the assignment of a list with a mixture of values including another list and a dictionary type containing it all. 
 
-Reading data from a [SDXDocument] is just using the dictionary behavior and address the value with group and key names.
+Reading data from a [SDXDocument] use of the dictionary behavior and addresses the value with group and key names.
 
 ~~~~{.java}
 System.out.println(sdoc.getValue("General", "str"));
@@ -360,7 +360,7 @@ Now execute the server instance on a terminal emulation window and the client in
 
 *) /path/to/nativeLib:
 
-The native libraries (see libTML-java installation) are:
+The native libraries that you want to have on you library path are (see libTML-java installation):
 
 - jniSidex11 library
 - jniTml11 library
