@@ -24,16 +24,16 @@
  *  fee but returning back any change, improvement or addition in the
  *  form of source code, project image, documentation patches, etc.
  *
- *  For commercial support on build UJO enabled solutions contact us:
- *          
- *      Postal address:
- *         wobe-systems GmbH
- *         Wittland 2-4
- *         24109 Kiel
- *         Germany
+ *  Homepage:
+ *    http://www.libtml.org
  *
- *      Email address:
- *         info@tml-software.com - http://www.tml-software.com
+ *  For professional support contact us:
+ *
+ *    wobe-systems GmbH
+ *    support@libtml.org
+ *
+ * Contributors:
+ *    wobe-systems GmbH
  */
 
 /* Header for class jniTml */

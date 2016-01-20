@@ -274,7 +274,7 @@ public class TMLCmd extends Object implements TmlJniCmdProgressReplyIF,
    * 
    * @throws TmlSidexException 
    */
-  public void setErrorMessage(int error, String msg) throws TmlSidexException{
+  public void setErrorMessage(String msg) throws TmlSidexException{
     m_tml.tml_Cmd_Header_SetErrorMessage(m_var,  msg);
   }
   

@@ -22,8 +22,14 @@
 #  fee but returning back any change, improvement or addition in the
 #  form of source code, project image, documentation patches, etc.
 #
-#  For commercial support on build UJO enabled solutions contact us:
-#  
+#  Homepage:
+#    http://www.libtml.org
+#
+#  For professional support contact us:
+#
+#    wobe-systems GmbH
+#    support@libtml.org
+#
 # Contributors:
 #    wobe-systems GmbH
 
@@ -101,7 +107,7 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
   
   set(TARGET jniSidex)
   
-  set (INST_LIB_PATH /usr/local/lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
 
 #######################################################
@@ -117,8 +123,40 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
   
   set(TARGET jniSidex)
   
-  set (INST_LIB_PATH /usr/local/lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
+
+#######################################################
+## FreeBSD / 32 bit
+#######################################################
+if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
+  set(SIDEXLIB libsidex11.so)
+
+  ADD_DEFINITIONS ("-std=c++0x")
+  ADD_DEFINITIONS ("-m32")
+  set(CMAKE_CXX_FLAGS "-m32")
+  set(PREPROCESSOR_DEF -DJNISIDEX_EXPORTS -DLINUX -DGCC4)
+  
+  set(TARGET jniSidex)
+  
+  set (INST_LIB_PATH /usr/local/lib)
+endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
+
+#######################################################
+## FreeBSD / 64 bit
+#######################################################
+if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
+  set(SIDEXLIB libsidex11_64.so)
+
+  ADD_DEFINITIONS ("-std=c++0x")
+  ADD_DEFINITIONS ("-m64")
+  set(CMAKE_CXX_FLAGS "-m64")
+  set(PREPROCESSOR_DEF -DJNISIDEX_EXPORTS -DLINUX -DGCC4)
+  
+  set(TARGET jniSidex)
+  
+  set (INST_LIB_PATH /usr/local/lib)
+endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
 
 #######################################################
 ## OSX 32 bit
@@ -176,7 +214,7 @@ if (${TML_TARGET_PLATFORM} STREQUAL linux_arm32)
   
   set(TARGET jniSidex)
   
-  set (INST_LIB_PATH /usr/local/lib)
+  set (INST_LIB_PATH /usr/lib)
 endif (${TML_TARGET_PLATFORM} STREQUAL linux_arm32)
                     
 #######################################################
