@@ -13,7 +13,7 @@ To use libTML-java binary package various libraries need to be present. Refer to
 > If the target platform is Windows or OS-X, the libTML-java binary installer respectively disc image file contain these dependent libraries. 
 #### libTML-c ####
 
-See [Installation guide for libTML-c binary package](http://libtml.org/docs/libtml-c-html/md_tml_bin_install.html).
+See [Installation guide for libTML-c binary package](http://libtml.org/docs/libtml-c-html/tml_bin_install.html).
 <br><br>
 
 ----------

@@ -28,7 +28,7 @@ To build libTML-java various libraries need to be present. Refer to the document
 
 #### libTML-c ####
 
-See [Installation guide for libTML-c](http://libtml.org/docs/libtml-c-html/md_tml_install.html).
+See [Installation guide for libTML-c](http://libtml.org/docs/libtml-c-html/tml_install.html).
 
 ### Set library dependencies manually ###
 

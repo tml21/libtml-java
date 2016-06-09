@@ -1,7 +1,7 @@
 # Android example #
 
 ### Libraries ###
-To compile and execute the android exmaple app, some libraries are included. In the [installation guide for libTML-c](http://www.libtml.org/docs/libtml-c-html/md_tml_install.html) and [installation guide for libTML-java](Link to tml_install for java) is described how to build these libraries. Also another library is added, 'libstlport_shared.so'. It is a complete set of C++ standard library headers and needed for the other libraries. It can be found inside an android-ndk, /sources/cxx-stl/stlport/libs/ and depends on the android platform.
+To compile and execute the android exmaple app, some libraries are included. In the [installation guide for libTML-c](http://www.libtml.org/docs/libtml-c-html/tml_install.html) and [installation guide for libTML-java](Link to tml_install for java) is described how to build these libraries. Also another library is added, 'libstlport_shared.so'. It is a complete set of C++ standard library headers and needed for the other libraries. It can be found inside an android-ndk, /sources/cxx-stl/stlport/libs/ and depends on the android platform.
 
 ### Activities ###
 - **MainActivity, MainListFragment**: The *MainActivity* is the Parentactivity of all others and organizes the application. For communicating with TML, the TMLcore should be initialised only once and then be used for sending every command. The MainActivity does all the communications with the Server and starts new Activities, expecting results from them and handling them approprietly. For example sending a specific command to the server with informations about an edited database-object. Afterwards the list of database-items will be discarded and directly loaded again from the database via the server.<br/>
