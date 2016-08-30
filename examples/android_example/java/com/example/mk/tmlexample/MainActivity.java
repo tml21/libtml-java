@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("vortex-1.1");
         System.loadLibrary("iconv");
         System.loadLibrary("stlport_shared");
-        System.loadLibrary("sidex11");
-        System.loadLibrary("tmlcore11");
+        System.loadLibrary("sidex12");
+        System.loadLibrary("tmlcore12");
         // The TML JNI libraries
-        System.loadLibrary("jniSidex11");
-        System.loadLibrary("jniTml11");
+        System.loadLibrary("jniSidex12");
+        System.loadLibrary("jniTml12");
     }
 
 

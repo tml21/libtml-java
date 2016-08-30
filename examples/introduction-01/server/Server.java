@@ -15,8 +15,8 @@ public class Server
 {
   // load the TML JNI libraries
   static {
-    System.loadLibrary("jniSidex11");   
-    System.loadLibrary("jniTml11");     
+    System.loadLibrary("jniSidex12");   
+    System.loadLibrary("jniTml12");     
   }
 
   public static void main( String[] args )
