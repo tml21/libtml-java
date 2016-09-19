@@ -48,8 +48,8 @@ source_group("Sourcefiles" FILES ${TML_SOURCES})
 ## Windows 32 bit / MinGW build
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL win_x86-32_mingw)
-  set(SIDEXLIB sidex11.lib)
-  set(TMLLIB tmlcore11.lib)
+  set(SIDEXLIB sidex${TML_API_VERSION}.lib)
+  set(TMLLIB tmlcore${TML_API_VERSION}.lib)
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS -DMINGW_BUILD)
   set(TARGET jniTml)
   ADD_DEFINITIONS ("-m32")
@@ -62,8 +62,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL win_x86-32_mingw)
 ## Windows 64 bit / MinGW build
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL win_x86-64_mingw)
-  set(SIDEXLIB sidex11_64.lib)
-  set(TMLLIB tmlcore11_64.lib)
+  set(SIDEXLIB sidex${TML_API_VERSION}_64.lib)
+  set(TMLLIB tmlcore${TML_API_VERSION}_64.lib)
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS -DMINGW_BUILD)
   set(TARGET jniTml)
   ADD_DEFINITIONS ("-m64")
@@ -76,8 +76,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL win_x86-64_mingw)
 ## Windows 32 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL win_x86-32)
-  set(SIDEXLIB sidex11.lib)
-  set(TMLLIB tmlcore11.lib)
+  set(SIDEXLIB sidex${TML_API_VERSION}.lib)
+  set(TMLLIB tmlcore${TML_API_VERSION}.lib)
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS)
   
   set(TARGET jniTml)
@@ -89,8 +89,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL win_x86-32)
 ## Windows 64 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL win_x86-64)
-  set(SIDEXLIB sidex11_64.lib)
-  set(TMLLIB tmlcore11_64.lib)
+  set(SIDEXLIB sidex${TML_API_VERSION}_64.lib)
+  set(TMLLIB tmlcore${TML_API_VERSION}_64.lib)
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS)
   
   set(TARGET jniTml)
@@ -102,8 +102,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL win_x86-64)
 ## LINUX 32 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
-  set(SIDEXLIB libsidex11.so)
-  set(TMLLIB libtmlcore11.so)
+  set(SIDEXLIB libsidex${TML_API_VERSION}.so)
+  set(TMLLIB libtmlcore${TML_API_VERSION}.so)
 
   ADD_DEFINITIONS ("-std=c++0x")
   ADD_DEFINITIONS ("-m32")
@@ -119,8 +119,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-32)
 ## LINUX 64 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
-  set(SIDEXLIB libsidex11_64.so)
-  set(TMLLIB libtmlcore11_64.so)
+  set(SIDEXLIB libsidex${TML_API_VERSION}_64.so)
+  set(TMLLIB libtmlcore${TML_API_VERSION}_64.so)
 
   ADD_DEFINITIONS ("-std=c++0x")
   ADD_DEFINITIONS ("-m64")
@@ -136,8 +136,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL linux_x86-64)
 ## FreeBSD / 32 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
-  set(SIDEXLIB libsidex11.so)
-  set(TMLLIB libtmlcore11.so)
+  set(SIDEXLIB libsidex${TML_API_VERSION}.so)
+  set(TMLLIB libtmlcore${TML_API_VERSION}.so)
 
   ADD_DEFINITIONS ("-std=c++0x")
   ADD_DEFINITIONS ("-m32")
@@ -153,8 +153,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-32)
 ## FreeBSD / 64 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
-  set(SIDEXLIB libsidex11_64.so)
-  set(TMLLIB libtmlcore11_64.so)
+  set(SIDEXLIB libsidex${TML_API_VERSION}_64.so)
+  set(TMLLIB libtmlcore${TML_API_VERSION}_64.so)
 
   ADD_DEFINITIONS ("-std=c++0x")
   ADD_DEFINITIONS ("-m64")
@@ -170,8 +170,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL freeBSD_x86-64)
 ## OSX 32 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL osx_x86-32)
-  set(SIDEXLIB libsidex11.dylib)
-  set(TMLLIB libtmlcore11.dylib)
+  set(SIDEXLIB libsidex${TML_API_VERSION}.dylib)
+  set(TMLLIB libtmlcore${TML_API_VERSION}.dylib)
 
   ADD_DEFINITIONS ("-std=c++11")
   ADD_DEFINITIONS ("-arch i386")
@@ -187,8 +187,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL osx_x86-32)
 ## OSX 64 bit
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL osx_x86-64)
-  set(SIDEXLIB libsidex11_64.dylib)
-  set(TMLLIB libtmlcore11_64.dylib)
+  set(SIDEXLIB libsidex${TML_API_VERSION}_64.dylib)
+  set(TMLLIB libtmlcore${TML_API_VERSION}_64.dylib)
 
   ADD_DEFINITIONS ("-std=c++11")
   ADD_DEFINITIONS ("-arch x86_64")
@@ -204,8 +204,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL osx_x86-64)
 ## ANDROID ARM32
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL android_arm32)
-  set(SIDEXLIB sidex11.so)
-  set(TMLLIB tmlcore11.so)
+  set(SIDEXLIB sidex${TML_API_VERSION}.so)
+  set(TMLLIB tmlcore${TML_API_VERSION}.so)
   ADD_DEFINITIONS ("-std=c++11")
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS -DLINUX -DGCC4 -DANDROID)
   
@@ -218,8 +218,8 @@ endif (${TML_TARGET_PLATFORM} STREQUAL android_arm32)
 ## LINUX ARM32
 #######################################################
 if (${TML_TARGET_PLATFORM} STREQUAL linux_arm32)
-  set(SIDEXLIB libsidex11.so)
-  set(TMLLIB libtmlcore11.so)
+  set(SIDEXLIB libsidex${TML_API_VERSION}.so)
+  set(TMLLIB libtmlcore${TML_API_VERSION}.so)
 
   ADD_DEFINITIONS ("-std=c++0x")
   set(PREPROCESSOR_DEF -DJNITML_EXPORTS -DLINUX -DGCC4)

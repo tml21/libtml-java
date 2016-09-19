@@ -18,8 +18,8 @@ public class Client
 {
   // load the libraries
   static {
-    System.loadLibrary("jniSidex11");   // The TML JNI library
-    System.loadLibrary("jniTml11");     // The TML JNI library
+    System.loadLibrary("jniSidex12");   // The TML JNI library
+    System.loadLibrary("jniTml12");     // The TML JNI library
   }
   
   public static void main( String[] args ) 
